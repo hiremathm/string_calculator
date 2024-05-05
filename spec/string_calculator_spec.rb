@@ -1,5 +1,4 @@
 require '../string_calculator.rb'
-# require 'rspec'
 
 RSpec.describe StringCalculator do
 	subject(:calculator) { described_class.new }
@@ -12,6 +11,10 @@ RSpec.describe StringCalculator do
 	  it 'should not accept other data types' do
     	expect{ calculator.int_add(123) }.to raise_error('only accepts a string')
     	expect{ calculator.int_add(['123']) }.to raise_error('only accepts a string')
+  	end
+
+  	it 'should return 0 for an empty string' do
+    	expect(calculator.int_add('')).to eq(0)
   	end
 	end
 end
