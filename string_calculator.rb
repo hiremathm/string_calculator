@@ -1,20 +1,18 @@
 class StringCalculator
-  def int_add(string_of_numbers)
-    raise 'only accepts a string' unless string_of_numbers.is_a?(String)
-    return 0 if string_of_numbers.empty?
-    string_array = string_of_numbers.split(/[^0-9-]+/)
-    integer_array = string_array.map(&:to_i)
-    raise "cannot accept negatives - #{check_for_negatives(integer_array)}" if check_for_negatives(integer_array)
-    integer_array.inject(0){|sum,x| x <= 1000? sum + x : sum }
+  def int_add(input)
+    raise 'only accepts a string' unless input.is_a?(String)
+    return 0 if input.empty?
+    numbers = input.scan(/[0-9-]+/).map(&:to_i)
+    if negatives = check_for_negatives(numbers)
+      raise "cannot accept negatives - #{negatives}"
+    end
+    numbers.inject(0){|sum,x| x <= 1000? sum + x : sum }
   end
 
   private
-  def check_for_negatives(integer_array)
-     negatives_array = integer_array.select{ |i| i<0 }
-    if negatives_array.length > 0
-      return negatives_string = negatives_array.join(",")
-    else
-      return false
-    end
+  def check_for_negatives(numbers)
+    negatives = numbers.select{ |i| i < 0 }
+    # Ruby return the last statement which is the negatives string, or nil, that is treated as false
+    negatives.join(",") if negatives.length > 0
   end
 end
