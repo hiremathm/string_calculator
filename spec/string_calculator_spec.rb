@@ -16,5 +16,9 @@ RSpec.describe StringCalculator do
   	it 'should return 0 for an empty string' do
     	expect(calculator.int_add('')).to eq(0)
   	end
+
+  	it 'should not accept negative numbers' do
+    	expect{ calculator.int_add("123,-2") }.to raise_error("cannot accept negatives - -2")
+  	end
 	end
 end
