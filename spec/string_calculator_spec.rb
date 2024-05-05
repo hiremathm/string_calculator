@@ -28,5 +28,9 @@ RSpec.describe StringCalculator do
   	it 'should return the sum of the numbers in the passed string, if the passed string contains new line delimiters' do
 	    expect(calculator.int_add("12\n34\n56")).to eq(102)
   	end
+
+  	it 'should handle multiple random delimiters' do
+	    expect(calculator.int_add("//;\n1;2")).to eq(3)
+  	end
 	end
 end
