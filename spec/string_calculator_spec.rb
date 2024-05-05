@@ -9,8 +9,9 @@ RSpec.describe StringCalculator do
     	expect{ calculator.int_add('1,2,3') }.not_to raise_error
   	end
 
-	  it 'should raise error if input is not string' do
-	    expect { calculator.int_add(123) }.to raise_error
-	  end
+	  it 'should not accept other data types' do
+    	expect{ calculator.int_add(123) }.to raise_error('only accepts a string')
+    	expect{ calculator.int_add(['123']) }.to raise_error('only accepts a string')
+  	end
 	end
 end
