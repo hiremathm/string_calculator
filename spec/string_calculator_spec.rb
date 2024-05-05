@@ -20,5 +20,9 @@ RSpec.describe StringCalculator do
   	it 'should not accept negative numbers' do
     	expect{ calculator.int_add("123,-2") }.to raise_error("cannot accept negatives - -2")
   	end
+
+  	it 'should return the sum of the numbers in the passed string, if the passed string contains comma delimiters' do
+	    expect(calculator.int_add('12,34')).to eq(46)
+  	end
 	end
 end

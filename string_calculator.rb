@@ -9,6 +9,7 @@ class StringCalculator
     string_array = string_of_numbers.split(/[^0-9-]+/)
     integer_array = string_array.map(&:to_i)
     raise "cannot accept negatives - #{check_for_negatives(integer_array)}" if check_for_negatives(integer_array)
+    integer_array.inject(0){|sum,x| x <= 1000? sum + x : sum }
   end
 
   private
