@@ -24,5 +24,9 @@ RSpec.describe StringCalculator do
   	it 'should return the sum of the numbers in the passed string, if the passed string contains comma delimiters' do
 	    expect(calculator.int_add('12,34')).to eq(46)
   	end
+
+  	it 'should return the sum of the numbers in the passed string, if the passed string contains new line delimiters' do
+	    expect(calculator.int_add("12\n34\n56")).to eq(102)
+  	end
 	end
 end
